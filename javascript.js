@@ -77,7 +77,19 @@ function equals(imputNum1, imputOperator, imputNum2) {
 
 function getOperator(imputOperator) {
         if (result === "") {
-            operator = imputOperator;
+            if (operator !== "") {
+                result = operate(number1, operator, number2)
+                result = Number(result.toFixed(4))
+                number1 = result
+                num1 = result
+                updateDisplay(result)
+                result = ""
+                operator = imputOperator
+                number2 = ""
+                num2 = ""
+            } else {
+                operator = imputOperator;
+            }
         } else {
             number1 = result
             operator = imputOperator;
