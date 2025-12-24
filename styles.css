@@ -10,14 +10,14 @@ body {
 }
 
 .display {
-    background-color: rgb(57, 57, 57);
-    border: 8px solid rgb(146, 146, 146);
+    background-color: rgb(174, 174, 174);
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     padding: 12px 24px;
+    min-height: 116px;
     margin: 24px 48px 0 48px;
     flex-basis: 0;
-    color: azure;
+    color: black;
     font-size: 48px;
     display: flex;
     justify-content: stretch;
@@ -42,7 +42,7 @@ button {
     flex-basis: 40%;
 }
 
-.backspace {
+.delete {
     border-bottom-left-radius: 24px;
 }
 

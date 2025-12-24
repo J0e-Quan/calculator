@@ -16,22 +16,22 @@ function divide(num1, num2) {
 };
 
 function operate(num1, operator, num2) {
-    let result;
+    let answer;
     switch (operator) {
         case "+":
-            result = add(num1, num2);
+            answer = add(num1, num2);
             break;
         case "-":
-            result = subtract(num1, num2);
+            answer = subtract(num1, num2);
             break;
         case "×":
-            result = multiply(num1, num2);
+            answer = multiply(num1, num2);
             break;
         case "÷":
-            result = divide(num1, num2);
+            answer = divide(num1, num2);
             break;
     }
-    return result
+    return answer
 }
 
 function updateDisplay(num) {
@@ -49,41 +49,64 @@ let num2 = ""
 let number1 = ""
 let number2 = ""
 let operator = ""
+let result = ""
 let display = document.querySelector('.result')
 
 //Button imput handler
 let btns = document.querySelector(".buttons")
 btns.addEventListener('click', (event) => {
     let targetBtn = event.target
-    if (targetBtn.classList.contains("number") || targetBtn.classList.contains("decimal")) {
-        if (number1 === "") {
+    if ((targetBtn.classList.contains("number") || targetBtn.classList.contains("decimal"))) {
+        if (operator === "" && num1.length < 12) {
+            result = ""
             num1 = num1 + targetBtn.textContent
             updateDisplay(num1)
-            console.log("Num1: "+num1)
-        } else if (number1 !== "") {
+            number1 = Number(num1);
+        } else if (operator !== "" && num2.length < 12) {
+            result = ""
             num2 = num2 + targetBtn.textContent
             updateDisplay(num2)
-            console.log("Num2: "+num2)
+            number2 = Number(num2)
         }
     } else if (targetBtn.classList.contains("operator")) {
-        operator = targetBtn.textContent;
-        number1 = Number(num1);
-        num1 = "";
-    } else if (targetBtn.classList.contains("equals")) {
-        number2 = Number(num2);
-        num2 = "";
-        let result = operate(number1, operator, number2);
+        if (result === "") {
+            operator = targetBtn.textContent;
+            console.log(number1)
+        } else {
+            number1 = result
+            operator = targetBtn.textContent;
+            console.log(number1)
+        }
+    } else if (targetBtn.classList.contains("equals") && num2 !== "") {
+        num1 = ""
+        num2 = ""
+        result = operate(number1, operator, number2);
+        result = Number(result.toFixed(4))
         operator = "";
         number2 = "";
-        number1 = result
-        num1 = result
-        updateDisplay(number1);
+        number1 = "";
+        updateDisplay(result);
+        console.log(result)
     } else if (targetBtn.classList.contains("clear")) {
         num1 = ""
         num2 = ""
         operator = ""
         number1 = ""
         number2 = ""
+        result = ""
         updateDisplay(0)
+    } else if (targetBtn.classList.contains("delete")) {
+        if (operator === "") {
+            result = ""
+            num1 = num1.slice(0, -1)
+            updateDisplay(num1)
+            number1 = Number(num1);
+        } else if (operator !== "") {
+            result = ""
+            num2 = num2.slice(0, -1)
+            updateDisplay(num2)
+            number2 = Number(num2);            
+        }
     }
 })
+
