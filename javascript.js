@@ -88,14 +88,24 @@ function getNumber(imputNum) {
     if (operator === "" && num1.length < 12) {
         result = ""
         num1 = num1 + imputNum
+        checkForDecimal(num1)
         updateDisplay(num1)
         number1 = Number(num1);
         } else if (operator !== "" && num2.length < 12) {
         result = ""
         num2 = num2 + imputNum
+        checkForDecimal(num2)
         updateDisplay(num2)
         number2 = Number(num2)
         }
+}
+
+function checkForDecimal(imputNum) {
+    if (imputNum.includes(".")) {
+        isDecimalPresent = true
+    } else {
+        isDecimalPresent = false
+    }
 }
 
 
@@ -110,6 +120,7 @@ let number1 = ""
 let number2 = ""
 let operator = ""
 let result = ""
+let isDecimalPresent = false
 let display = document.querySelector('.result')
 
 //Button imput handler
@@ -117,7 +128,9 @@ let btns = document.querySelector(".buttons")
 btns.addEventListener('click', (event) => {
     let targetBtn = event.target
     targetBtn.blur()
-    if ((targetBtn.classList.contains("number") || targetBtn.classList.contains("decimal"))) {
+    if (targetBtn.classList.contains("number")) {
+        getNumber(targetBtn.textContent)
+    } else if (targetBtn.classList.contains("decimal") && isDecimalPresent === false) {
         getNumber(targetBtn.textContent)
     } else if (targetBtn.classList.contains("operator")) {
         getOperator(targetBtn.textContent)
@@ -134,8 +147,10 @@ btns.addEventListener('click', (event) => {
 window.addEventListener('keydown', (event) => {
     let targetKey = event.key
     event.preventDefault()
-    if ((targetKey >= 0 && targetKey <=9) || targetKey === ".") {
-       getNumber(targetKey)
+    if (targetKey >= 0 && targetKey <=9){
+        getNumber(targetKey)
+    } else if (targetKey === "." && isDecimalPresent === false) {
+        getNumber(targetKey)
     } else if (targetKey === "+" || targetKey === "-" || targetKey === "*" || targetKey === "/") {
         let imputOperator;
         switch(targetKey) {
