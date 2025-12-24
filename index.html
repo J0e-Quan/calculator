@@ -3,11 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
     <link rel="stylesheet" href="styles.css">
     <script src="javascript.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
-    
+    <div class="display">
+        <h1 class="result">1 + 1 = 11</h1>
+    </div>
+    <div class="buttons">
+        <div class="first row">
+            <button type="button" class="number seven">7</button>
+            <button type="button" class="number eight">8</button>
+            <button type="button" class="number nine">9</button>
+            <button type="button" class="function clear">Clear</button>
+        </div>
+        <div class="second row">
+            <button type="button" class="number four">4</button>
+            <button type="button" class="number five">5</button>
+            <button type="button" class="number six">6</button>
+            <button type="button" class="operator add">+</button>
+            <button type="button" class="operator multiply">×</button>
+        </div>
+        <div class="third row">
+            <button type="button" class="number one">1</button>
+            <button type="button" class="number two">2</button>
+            <button type="button" class="number three">3</button>
+            <button type="button" class="operator subtract">-</button>
+            <button type="button" class="operator divide">÷</button>
+        </div>
+        <div class="fourth row">
+            <button type="button" class="function backspace">Del</button>
+            <button type="button" class="number zero">0</button>
+            <button type="button" class="function decimal">.</button>
+            <button type="button" class="operator equals">=</button>
+        </div>                        
+    </div>
 </body>
 </html>
