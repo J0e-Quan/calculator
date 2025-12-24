@@ -62,11 +62,11 @@ function clear() {
     updateDisplay(0)
 }
 
-function equals(number1, operator, number2) {
+function equals(imputNum1, imputOperator, imputNum2) {
     if (num2 !== "") {
         num1 = ""
         num2 = ""
-        result = operate(number1, operator, number2);
+        result = operate(imputNum1, imputOperator, imputNum2);
         result = Number(result.toFixed(4))
         operator = "";
         number2 = "";
