@@ -20,3 +20,7 @@ Live demo link: https://j0e-quan.github.io/calculator/
 ## Gallery:
 ![Picture showing calculator UI on laptop](./readme-assets/calc-wide.jpeg)
 ![Picture showing calculator UI on phone](./readme-assets/calc-mobile.jpeg)
+
+## Getting started:
+1. clone this repo in your desired folder: `git clone https://github.com/J0e-Quan/calculator.git`
+2. open index.html in your browser to run the code
